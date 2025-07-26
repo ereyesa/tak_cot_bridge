@@ -5,7 +5,7 @@ package_name = 'tak_cot_bridge'
 setup(
     name=package_name,
     version='0.1.0',
-    packages=[package_name],
+    packages=find_packages(where='.', include=['tak_cot_bridge']),
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
