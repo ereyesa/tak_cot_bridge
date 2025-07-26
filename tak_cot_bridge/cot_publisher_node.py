@@ -115,6 +115,10 @@ class CotPublisherNode(Node):
     # ======================
 
 def main(args=None):
+    import rclpy
+    from rclpy.node import Node
+    from tak_cot_bridge.cot_publisher_node import CotPublisherNode
+
     rclpy.init(args=args)
     node = CotPublisherNode()
     rclpy.spin(node)
