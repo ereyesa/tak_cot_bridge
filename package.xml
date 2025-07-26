@@ -3,20 +3,25 @@
   <name>tak_cot_bridge</name>
   <version>0.1.0</version>
   <description>
-    ROS 2 node to bridge MAVROS telemetry data with FreeTAKServer by generating and sending Cursor-on-Target (CoT) events.
+    ROS 2 node to bridge MAVROS telemetry data with FreeTAKServer by generating
+    and sending Cursor-on-Target (CoT) events.
     Compatible with ROS 2 Humble and Jazzy.
   </description>
+
   <maintainer email="efrain.reyes@innervycs.com">Efrain</maintainer>
   <license>MIT</license>
 
+  <!-- Build tools -->
   <buildtool_depend>ament_python</buildtool_depend>
-  <depend>rclpy</depend>
-  <depend>sensor_msgs</depend>
-  <depend>std_msgs</depend>
-  <depend>geographic_msgs</depend>
 
+  <!-- Execution dependencies -->
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geographic_msgs</exec_depend>
   <exec_depend>pytak</exec_depend>
 
+  <!-- Test dependencies -->
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 

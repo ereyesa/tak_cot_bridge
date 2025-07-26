@@ -4,7 +4,7 @@ def iso_time_now():
     return datetime.utcnow().isoformat() + "Z"
 
 def iso_time_stale(minutes=5):
-    stale = datetime.utcnow() + timedelta(minutes=minutes)
+    stale = datetime.utcnow() - timedelta(minutes=minutes)
     return stale.isoformat() + "Z"
 
 def build_cot_event(uid, lat, lon, how="m-g", event_type="a-f-G-U-C"):
