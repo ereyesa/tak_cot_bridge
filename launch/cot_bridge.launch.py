@@ -16,6 +16,7 @@ def generate_launch_description():
             executable='cot_publisher_node',
             name='cot_publisher_node',
             parameters=[config_file],
-            output='screen'
+            output='screen',
+            # env={'PYTHONPATH': os.getenv('PYTHONPATH', '')}
         ),
     ])
