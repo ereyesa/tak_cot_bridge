@@ -24,7 +24,7 @@ class CotPublisherNode(Node):
         super().__init__('cot_publisher_node')
 
         # Parámetros ROS (con valores por defecto)
-        self.declare_parameter('tak_server_ip', '192.168.50.229')
+        self.declare_parameter('tak_server_ip', '192.168.50.86')
         self.declare_parameter('tak_server_port', 8087)
         self.declare_parameter('publish_rate_hz', 1.0)
         self.declare_parameter('retry_timeout_sec', 5.0)
