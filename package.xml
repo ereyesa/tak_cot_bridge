@@ -20,6 +20,8 @@
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>geographic_msgs</exec_depend>
   <exec_depend>pytak</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>builtin_interfaces</exec_depend>
 
   <!-- Test dependencies -->
   <test_depend>ament_lint_auto</test_depend>
