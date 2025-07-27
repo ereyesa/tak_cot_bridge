@@ -10,6 +10,14 @@ import time
 
 from tak_cot_bridge.cot_utils import build_cot_event
 
+from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
+
+qos = QoSProfile(
+    reliability=ReliabilityPolicy.RELIABLE,
+    history=HistoryPolicy.KEEP_LAST,
+    depth=10
+)
+
 
 class CotPublisherNode(Node):
     def __init__(self):
@@ -43,7 +51,7 @@ class CotPublisherNode(Node):
         self.gps_lock = threading.Lock()
 
         # Suscripción al tópico GPS MAVROS
-        self.create_subscription(NavSatFix, '/mavros/global_position/global', self.gps_callback, 10)
+        self.create_subscription(NavSatFix, '/mavros/global_position/global', self.gps_callback, qos)
 
         # Timer para publicar eventos CoT periódicamente
         timer_period = 1.0 / self.publish_rate_hz
