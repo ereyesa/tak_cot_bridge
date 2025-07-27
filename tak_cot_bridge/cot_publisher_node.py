@@ -13,7 +13,7 @@ from tak_cot_bridge.cot_utils import build_cot_event
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 
 qos = QoSProfile(
-    reliability=ReliabilityPolicy.RELIABLE,
+    reliability=ReliabilityPolicy.BEST_EFFORT,
     history=HistoryPolicy.KEEP_LAST,
     depth=10
 )
