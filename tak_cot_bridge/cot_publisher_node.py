@@ -53,6 +53,7 @@ class CotPublisherNode(Node):
         self.retry_count = 0
 
     def gps_callback(self, msg: NavSatFix):
+        self.get_logger().info(f"GPS recibido (status={msg.status.status}): lat={msg.latitude}, lon={msg.longitude}")
         if msg.status.status < 0:
             self.get_logger().warn("GPS fix inválido, no se actualizará posición para CoT")
             return
@@ -63,7 +64,10 @@ class CotPublisherNode(Node):
         with self.gps_lock:
             msg = self.latest_gps_msg
 
+        self.get_logger().info("Ejecutando timer_callback, revisando datos GPS...")
+
         if msg is None:
+            self.get_logger().info("No hay mensaje GPS en memoria (msg is None)")
             self.get_logger().warn("No hay datos GPS recibidos aún, no se enviará evento CoT")
             return
 
@@ -86,6 +90,7 @@ class CotPublisherNode(Node):
         Retorna True si se envió correctamente, False si falló.
         """
         try:
+            self.get_logger().info(f"Enviando mensaje CoT:\n{cot_msg}")
             self.sock.sendto(cot_msg.encode(), (self.tak_ip, self.tak_port))
             # No hay respuesta directa por UDP, consideramos enviado si no lanza excepción
             self.get_logger().info(f"Evento CoT enviado a {self.tak_ip}:{self.tak_port}")
@@ -118,6 +123,7 @@ class CotPublisherNode(Node):
 def main(args=None):
     rclpy.init(args=args)
     node = CotPublisherNode()
+    node.get_logger().info("Nodo cot_publisher_node iniciado correctamente.")
     rclpy.spin(node)
     node.destroy_node()
     rclpy.shutdown()
