@@ -51,7 +51,7 @@ class CotPublisherNode(Node):
         self.gps_lock = threading.Lock()
 
         # Suscripción al tópico GPS MAVROS
-        self.create_subscription(NavSatFix, '/mavros/global_position/global', self.gps_callback, qos)
+        self.create_subscription(NavSatFix, 'agv1/mavros/global_position/global', self.gps_callback, qos)
 
         # Timer para publicar eventos CoT periódicamente
         timer_period = 1.0 / self.publish_rate_hz
