@@ -9,6 +9,10 @@ ROS 2 package that subscribes to MAVROS topics and publishes Cursor-on-Target (C
 - Sends real-time CoT events over UDP to local or cloud FreeTAKServer.
 - Easily configurable IP and port via YAML file.
 
+```bash
+cd ~/ros2_ws && colcon build --packages-select tracer_integration_2
+```
+
 ## Nodes
 
 ### `cot_publisher_node.py`
@@ -21,3 +25,4 @@ ROS 2 package that subscribes to MAVROS topics and publishes Cursor-on-Target (C
 
 ```bash
 ros2 launch tak_cot_bridge cot_bridge.launch.py
+```
